@@ -8,11 +8,37 @@
       "WebFetch(domain:export.arxiv.org)",
       "WebFetch(domain:api.openalex.org)",
       "WebFetch(domain:api.semanticscholar.org)",
+      "WebFetch(domain:api.crossref.org)",
       "WebFetch(domain:doi.org)",
       "WebFetch(domain:github.com)",
+      "WebFetch(domain:eur-lex.europa.eu)",
       "Bash(python3 tools/lit.py:*)",
+      "Bash(python3 tools/check_numbers.py:*)",
+      "Bash(python3 tools/fidelity.py:*)",
+      "Bash(python3 tools/rank.py:*)",
+      "Bash(python3 tools/seal.py check:*)",
+      "Bash(python3 tools/seal.py run:*)",
       "Bash(latexmk:*)",
       "Bash(tectonic:*)"
+    ],
+    "deny": [
+      "Read(/projects/*/experiments/sealed/**)",
+      "Edit(/projects/*/experiments/sealed/**)",
+      "Write(/projects/*/experiments/sealed/**)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Read|Grep|Glob|Edit|Write|MultiEdit|NotebookEdit|Bash",
+        "hooks": [{ "type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR\"/tools/hooks/guard.py" }]
+      }
+    ],
+    "Stop": [
+      { "hooks": [{ "type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR\"/tools/hooks/stop_check.py", "timeout": 120 }] }
+    ],
+    "SubagentStop": [
+      { "hooks": [{ "type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR\"/tools/hooks/stop_check.py", "timeout": 120 }] }
     ]
   }
 }

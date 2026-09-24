@@ -11,5 +11,9 @@ Arguments: $ARGUMENTS (default: most recently modified project).
    this paper even if the results are positive?"). Apply fixes.
 4. Present: the hypotheses (one line each), the pilot experiment, the main experiments,
    total compute/time/cost, and the risks.
-5. **Checkpoint:** PI approves the plan and budget. Then freeze the hypotheses: add
-   `Status: pre-registered <date>` and commit them. From then on, changes are logged as deviations.
+5. **Checkpoint:** PI approves the plan, the budget, and the held-out harness in
+   `experiments/sealed.staging/` (if any). Then:
+   - set `**Status:** pre-registered <date>` in each hypothesis and commit (a hook then freezes
+     everything above the Deviations log);
+   - `python3 tools/seal.py seal projects/<slug>` (only with the PI's explicit OK).
+   From then on, changes are appended to the Deviations log with date and reason.

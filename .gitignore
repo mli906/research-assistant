@@ -9,3 +9,7 @@ projects/*/paper/*.fdb_latexmk
 __pycache__/
 .DS_Store
 projects/*/code/
+projects/*/.checks_passed
+projects/*/literature/papers.lock
+projects/*/literature/papers.tmp
+meta/literature/papers.lock

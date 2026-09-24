@@ -17,10 +17,14 @@
 ## Data (source, license, splits, leakage risks)
 ## Metrics (and why they measure the construct)
 ## Analysis plan (runs/seeds, test or CI, α, corrections)
+## Held-out evaluation
+<Which split is sealed (experiments/sealed/), how it was built, planned number of held-out evaluations (usually 1 per final system), what the implementer may use for development.>
+
 ## Ablations
 ## Predictions → conclusions
 | Outcome | Interpretation | Next step |
 |---------|----------------|-----------|
 
 ## Threats to validity
-## Deviations log (after pre-registration)
+## Deviations log
+<!-- After pre-registration, everything above is frozen (enforced by a hook). Append: YYYY-MM-DD | what changed | why | approved by -->
