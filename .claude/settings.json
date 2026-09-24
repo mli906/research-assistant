@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__claude_ai_SciSpace__search-papers",
+      "mcp__claude_ai_SciSpace__add-column",
+      "WebSearch",
+      "WebFetch(domain:arxiv.org)",
+      "WebFetch(domain:export.arxiv.org)",
+      "WebFetch(domain:api.openalex.org)",
+      "WebFetch(domain:api.semanticscholar.org)",
+      "WebFetch(domain:doi.org)",
+      "WebFetch(domain:github.com)",
+      "Bash(python3 tools/lit.py:*)",
+      "Bash(latexmk:*)",
+      "Bash(tectonic:*)"
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+\documentclass[11pt]{article}
+% Replace with the venue's official style file (e.g. neurips_2026.sty) when known.
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,booktabs,graphicx,xcolor}
+\usepackage[numbers]{natbib}
+\usepackage[hidelinks]{hyperref}
+\usepackage{cleveref}
+
+\title{TITLE}
+\author{AUTHORS}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+\input{sections/abstract}
+\end{abstract}
+\input{sections/introduction}
+\input{sections/related}
+\input{sections/method}
+\input{sections/experiments}
+\input{sections/discussion} % includes Limitations
+\input{sections/conclusion}
+
+\bibliographystyle{plainnat}
+\bibliography{refs}
+\end{document}

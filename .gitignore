@@ -1,0 +1,10 @@
+projects/*/experiments/results/**/checkpoints/
+projects/*/paper/*.aux
+projects/*/paper/*.log
+projects/*/paper/*.out
+projects/*/paper/*.bbl
+projects/*/paper/*.blg
+projects/*/paper/*.fls
+projects/*/paper/*.fdb_latexmk
+__pycache__/
+.DS_Store
