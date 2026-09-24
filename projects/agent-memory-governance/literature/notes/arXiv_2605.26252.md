@@ -1,0 +1,8 @@
+# arXiv:2605.26252 — Is Agent Memory a Database? Governed Evolving Memory (Orogat & Mansour, 2026-05-25)
+Tags: mechanisms, core. Read: full text via arXiv HTML (WebFetch-assisted), 2026-09-24.
+
+- **Problem:** Agent-memory systems and DB paradigms treat memory as record storage. This leads to four failure modes: unregulated growth, missing semantic revision, capacity-driven forgetting, and read-only retrieval.
+- **Method:** Vision paper that defines Governed Evolving Memory (GEM). State M_t = (content, structure, policies). Four state-level operators: ingestion, revision, forgetting, retrieval. Six correctness conditions over *trajectories*: query/transition soundness, dependency consistency, provenance preservation, bounded active memory, retrieval-induced adaptation. Three impossibility-style observations: pure-function retrieval cannot satisfy retrieval-induced adaptation; bounded memory and adaptation cannot both be enforced on top of CRUD; append-only storage with untyped propagation cannot satisfy transition soundness and dependency consistency. Prototype: MemState on Kuzu property graphs.
+- **Results:** Feasibility only; a capability matrix shows no existing DB paradigm or agent-memory family covers all four capabilities.
+- **Stated research directions:** native engine; correctness and evaluation (trajectory benchmarks, conflict policies); privacy (retrieval-induced leakage, verifiable erasure under evolving state).
+- **Critique:** Useful for framing governance as a data-management correctness property, which is closer to how banks think (data lineage, BCBS 239-style). Note the tension: "retrieval that writes" (salience updates) creates audit and log volume, and every read becomes a mutation that may need recording.

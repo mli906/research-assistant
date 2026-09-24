@@ -1,0 +1,7 @@
+# Absorbing Complexity: an interaction-native knowledge harness for financial LLM agents (arXiv:2606.01886)
+Read: full text (arXiv HTML, 2026-09-24, via WebFetch extraction). Tags: early-scan, finance-apps, core. Industry authors (True Trading – AI; Inc4.net).
+
+- **Design.** State = user (preferences, risk tolerance), market (regime tags), risk (exposure), workflow (execution history), plus a temporal knowledge graph. Each knowledge object carries **type, scope, evidence and provenance, confidence, maturity, regime tag, first-seen, last-validated, invalidation time**. Knowledge may drive an action only if confidence exceeds a threshold, maturity meets action risk, **and** the item is within the user's permitted overlay. Contradicting evidence triggers write-time invalidation. A wiki-style audit surface supports human review.
+- **Results (synthetic simulator).** Quality 0.815; latency 900 ms (−83% vs a wiki-walk baseline); **stale-memory use 0.9% vs 27%**; decision traceability 0.999. Over 7,680 workflows × 24 seeds.
+- **Limitations (stated).** Synthetic benchmark and simulator-defined metrics; no live or human labels.
+- **Critique.** This is the richest per-item governance metadata schema seen in finance memory papers. The claims rest entirely on a self-built simulator, so the numbers are not comparable to anything else. The schema (provenance, validity interval, maturity gating by action risk) is a useful design reference for a mechanism paper.

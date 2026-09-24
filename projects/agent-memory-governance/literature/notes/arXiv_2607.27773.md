@@ -1,0 +1,8 @@
+# arXiv:2607.27773 — ChronoMem: Version Control and Semantic Rollback for LLM Agent Memory (Su, Xu, Zuo, Bertino, 2026-07-30)
+Tags: mechanisms, core. Read: full text via arXiv HTML (WebFetch-assisted), 2026-09-24.
+
+- **Problem:** Memory evolves forward only, so there is no way to inspect, version or revert state after corrections, drift or corruption.
+- **Method:** Semantic version-control layer in Google's Agent Development Kit. Commit-on-write whole-memory snapshots over an append-only event log (SQLite). Natural-language rollback requests are resolved to versions by BM25 + dense retrieval + RRF + cross-encoder rerank. Restoration sets HEAD and truncates later versions (linear history). A *post-exposure* protocol tests whether the agent behaves as if later updates never happened.
+- **Data/results:** LoCoMo and MemoryAgentBench. Version selection Recall@1 goes from 12.0% to 20.5% (LoCoMo) and from 24.3% to 39.4% (MAB). Rollback-consistent QA F1 is 31–39% on LoCoMo, and accuracy 45–55% on MAB, across three models. Better than prompt-only, full-history and retrieval-only baselines.
+- **Stated limitations:** no concurrency (single-writer SQLite); linear history only; rollback queries synthesised from ground-truth anchors.
+- **Critique:** Versioning is what model-risk and record-keeping reviewers want (reconstruct what the agent "knew" at decision time). But truncating history and keeping full snapshots both clash with erasure (deleted data persists in old snapshots) and with WORM-style retention (truncation destroys records). Absolute accuracy is low. The field has not reconciled "reconstruct any past state" with "erase this person everywhere". That is an open design problem.

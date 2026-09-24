@@ -1,0 +1,9 @@
+# arXiv:2609.04875 — Forgetting Without Restarting: Execution-State Unlearning for Stateful LLM Agents (Yao et al., 2026-09-04)
+Tags: mechanisms, core. Read: full text via arXiv HTML (WebFetch-assisted), 2026-09-24.
+
+- **Problem:** Today's "forget" deletes the plaintext memory record. Summaries, plans and the KV cache derived from it survive.
+- **Method:** Defines *execution-state unlearning* as counterfactual equivalence to a twin agent that never saw the target. Proves prefix sharing, taint monotonicity and a lower bound of T−τ+1 recomputed transitions for exact unlearning. **Provenance-Guided Selective Replay**: a provenance graph locates the injection step τ, a checkpoint is restored by cropping the KV cache, and the suffix is replayed with the target removed.
+- **Data:** LongMemEval (100 episodes), ToolSandbox (100), AgentDojo (80). Nine baselines, including memory-delete, forget-instruction, source-redaction, full reset and FIDES IFC. Models: Llama-3.1-8B, Qwen2.5-7B, Mistral-7B.
+- **Results:** Memory-delete leaves leakage unchanged (any-leak 0.86–1.00). Forget-instruction collapses under elicitation (Leak@probes = 1.00). Source redaction still acts on the revoked preference in 80% of episodes. Selective replay reaches 0.00 leak, is indistinguishable from full reset, and recomputes 9.3× fewer tokens (133 vs 1,235). Cost tracks T−τ+1 with R²≈1.
+- **Stated limitations:** covers runtime state only, not weights or committed external side effects; post-τ observations fixed; audits mostly string-based.
+- **Critique:** This is the strongest evidence that "delete the memory row" is not erasure for agents. It is relevant to GDPR Art. 17 and to consent withdrawal. In finance, *committed side effects* (orders, records the firm must retain) are both out of scope for the method and in tension with record-keeping retention. That tension is an open problem.

@@ -1,0 +1,8 @@
+# arXiv:2606.26627 — Agents That Know Too Much: A Data-Centric Survey of Privacy in LLM Agents (Lahjouji & Colaco, 2026-06-25)
+Tags: mechanisms, core. Read: full text via arXiv HTML (WebFetch-assisted), 2026-09-24.
+
+- **Problem:** Agent privacy work is scattered across RAG, text-to-SQL, memory, injection, access control and contextual privacy.
+- **Method:** Organises the field by *data surface*: DBs, files, RAG/vector stores, tools/APIs, **agent memory**, and inter-agent messages. Covers six disclosure outcomes (including compositional and cross-session leakage, and policy/consent violations) and four attack vectors. A coverage matrix maps governance mechanisms (access control, IFC, runtime governance, redaction/transformations, DP, contextual-privacy reasoning, audit/provenance) to risks.
+- **Key findings:** Only information-flow control covers both compositional and cross-session leakage. Memory uniquely creates "an obligation ... to delete or revoke data already written", and **no surveyed control addresses deletion/revocation across caches and derived artifacts**. No benchmark runs an end-to-end workflow under an explicit privacy policy.
+- **Stated open problems:** policy representation (purpose, recipient, consent); composing guarantees; preserving utility; detecting violations on intermediate channels, including memory writes; contextual reasoning; forgetting and revocation; enforcement outside the model; evaluation and evidence sufficient for regulated deployments.
+- **Critique:** A good synthesis that supports our gap list almost point for point. Survey claims are its own coding, so verify the matrix entries against the primaries before citing counts.

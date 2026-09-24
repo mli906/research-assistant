@@ -1,0 +1,9 @@
+# GateMem: Benchmarking Memory Governance in Multi-Principal Shared-Memory Agents (arXiv:2606.18829)
+Read: full text (arXiv HTML), accessed 2026-09-24. Tags: evaluation, core.
+
+- **Problem.** Memory benchmarks are single-user and recall-oriented; institutional deployments need utility for authorized users, access control across roles, and honoring deletion requests at once.
+- **Method.** 91 synthetic episodes, 9–18 principals each, four domains (medical, office, education, household; **no finance**). Agents ingest turns that add facts, revise them, change access boundaries or request forgetting; hidden checkpoints probe. 2,218 checkpoints (728 utility / 727 access control / 763 active forgetting). LLM-assisted construction + 4-stage QC (schema consistency, evidence support, deletion closure, leak-target precision).
+- **Metrics.** Memory Governance Score MGS = U × (1−A) × (1−F): U = effective utility (authorized questions answered completely), A = access-control violation rate, F = active-forgetting failure (post-deletion recovery). Secondary: over-refusal, tokens/checkpoint, seconds/checkpoint.
+- **Results.** 7 baselines (Long-Context, RAG-Naive, RAG-Policy, A-MEM, Mem0, ReMem-I/S) × 6 backbones. No method is high on all three; long context has the highest MGS but leaks 10–20% and costs 4–8k tokens/checkpoint; policy-aware RAG is safer but over-refuses; dedicated memory systems do not beat simple baselines.
+- **Limitations (stated).** Forgetting is tested at the interface ("not recoverable in answers"), not certified physical erasure.
+- **Critique.** This is the closest existing artifact to a memory-governance benchmark. Gaps relative to finance: no information barriers or regulated retention (retain-when-required is missing, so forgetting is only ever rewarded), no audit/provenance dimension, no adversarial principals, and the multiplicative MGS hides trade-offs (one zero term wipes out the score). Released on GitHub/HF.

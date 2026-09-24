@@ -1,0 +1,7 @@
+# Towards a HIPAA-compliant agentic AI system in healthcare (arXiv:2504.17669)
+Read: full text (arXiv HTML, 2026-09-24, via WebFetch extraction). Tags: finance-apps (transfer source), core. Work-in-progress paper.
+
+- **Mechanisms.** (1) Attribute-based access control, evaluated by a Policy Decision Agent over subject, resource, action and environment attributes. (2) Hybrid PHI sanitisation (regex plus BERT NER) before and after inference. (3) Immutable dual audit logs (interaction log plus hashed allow/deny decision log). A Middleware Agent tracks **session state** (role, consent status, PHI-access count) and a cumulative risk score to block incremental disclosure across turns.
+- **Evaluation.** Sanitisation F1 98.4% (99.4 precision / 97.6 recall) on 500 notes with 2,350 PHI instances; 3 residual leaks. ABAC matching 99.1% on 200 simulated requests; 12.3 ms per decision; 100% consent-revocation enforcement (small simulated set).
+- **Regulation cited.** 45 CFR 164.502(b) (minimum necessary), 164.508, 164.524–528, 164.312(b) audit controls, 164.514 de-identification.
+- **Critique.** This is a transferable pattern that finance lacks: **consent status and a "minimum necessary" check as run-time attributes on every memory or context access**, plus cumulative-disclosure scoring across turns. The evaluation is toy-scale and there is no persistent cross-session memory. Finance analogues are the GLBA/Reg S-P purpose limitation, GDPR Art. 5(1)(c), and information barriers.
