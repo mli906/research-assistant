@@ -12,6 +12,7 @@ fresher or more structured:
   lit.py import   <export.csv|.ris|.bib> [--source ...]    # SciSpace/Zotero/other exports
   lit.py zotero   collections | items [--collection X|--tag T|--q text] | fulltext <itemKey>
   lit.py add      <project_dir> [--tag core] < records.jsonl   # merge into literature/papers.jsonl
+  lit.py tag      <project_dir> <id> ... [--add X] [--remove Y]
   lit.py export-ris <project_dir> [--tag core]   # for File > Import in Zotero
   lit.py bib      <doi|arXiv:id> [...]           # fetch real BibTeX (never hand-write it)
   lit.py verify   <paper_dir> [--offline]        # citation integrity against the project library
@@ -382,6 +383,25 @@ def cmd_add(a):
     print(f"{added} new, {len(existing)} total -> {path}", file=sys.stderr)
 
 
+def cmd_tag(a):
+    """Add/remove tags on existing records (lock-safe)."""
+    import fcntl
+    path = Path(a.project) / "literature" / "papers.jsonl"
+    with open(path.with_suffix(".lock"), "w") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        recs = load_library(a.project)
+        n = 0
+        for r in recs:
+            if r["id"] in a.ids:
+                r["tags"] = sorted((set(r.get("tags", [])) | set(a.add or [])) - set(a.remove or []))
+                n += 1
+        tmp = path.with_suffix(".tmp")
+        tmp.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in recs))
+        tmp.replace(path)
+    missing = set(a.ids) - {r["id"] for r in recs}
+    print(f"retagged {n}" + (f"; not found: {sorted(missing)}" if missing else ""), file=sys.stderr)
+
+
 def cmd_export_ris(a):
     """Write the project library as RIS (for File > Import in Zotero/EndNote/Mendeley)."""
     for r in load_library(a.project):
@@ -601,6 +621,8 @@ def main():
     p.add_argument("key", nargs="?", help="item key (fulltext)"); p.add_argument("--collection"); p.add_argument("--tag"); p.add_argument("--q")
     p.set_defaults(fn=cmd_zotero)
     p = sp.add_parser("add"); p.add_argument("project"); p.add_argument("--tag", action="append", help="tag records (repeatable)"); p.set_defaults(fn=cmd_add)
+    p = sp.add_parser("tag"); p.add_argument("project"); p.add_argument("ids", nargs="+")
+    p.add_argument("--add", action="append"); p.add_argument("--remove", action="append"); p.set_defaults(fn=cmd_tag)
     p = sp.add_parser("export-ris"); p.add_argument("project"); p.add_argument("--tag", action="append"); p.set_defaults(fn=cmd_export_ris)
     p = sp.add_parser("bib"); p.add_argument("ids", nargs="+"); p.set_defaults(fn=cmd_bib)
     p = sp.add_parser("verify"); p.add_argument("paper_dir"); p.add_argument("--offline", action="store_true"); p.set_defaults(fn=cmd_verify)
