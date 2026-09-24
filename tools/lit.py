@@ -166,6 +166,85 @@ def cmd_cites(a):
         emit(_s2_rec(c["citingPaper"]))
 
 
+# --------------------------------------------------------------- imports ---
+
+def cmd_scispace(a):
+    """Convert a saved SciSpace search-papers JSON response (stdin) to records."""
+    data = json.load(sys.stdin)
+    for p in data.get("papers", []):
+        doi = p.get("doi")
+        m = re.search(r"arxiv\.(\d{4}\.\d{4,5})", (doi or "").lower())
+        arxiv = m.group(1) if m else None
+        emit({
+            "id": rec_id(doi, arxiv, f"scispace:{p.get('unique_id')}"), "title": p.get("title"),
+            "authors": [x.get("display_name") for x in (p.get("authors") or {}).get("data", [])],
+            "year": int(p["date"][:4]) if p.get("date") else None,
+            "date": (p.get("date") or "")[:10] or None,
+            "venue": (p.get("journal") or {}).get("display_name"), "doi": doi, "arxiv": arxiv,
+            "url": f"https://scispace.com/papers/{p.get('full_slug')}",
+            "abstract": p.get("abstract") or "", "tldr": p.get("tldr"),
+            "citations": ((p.get("metrics") or {}).get("citations") or {}).get("total"),
+            "source": "scispace"})
+
+
+def _bib_fields(entry):
+    f = {k.lower(): v.strip() for k, v in
+         re.findall(r"(\w+)\s*=\s*[{\"]((?:[^{}]|\{[^{}]*\})*)[}\"]", entry)}
+    return {k: re.sub(r"[{}]", "", v) for k, v in f.items()}
+
+
+def cmd_import(a):
+    """Import an export file (CSV, RIS, BibTeX) from SciSpace/Zotero/etc. into records."""
+    path = Path(a.file)
+    text = path.read_text(encoding="utf-8-sig", errors="replace")
+    rows = []
+    if path.suffix.lower() == ".csv":
+        import csv
+        for r in csv.DictReader(text.splitlines()):
+            r = {k.strip().lower(): (v or "").strip() for k, v in r.items() if k}
+            pick = lambda *ks: next((r[k] for k in ks if r.get(k)), "")
+            rows.append({"title": pick("title", "paper title"), "authors": pick("authors", "author"),
+                         "year": pick("year", "publication year"), "doi": pick("doi"),
+                         "venue": pick("journal", "venue", "source"), "abstract": pick("abstract"),
+                         "extra": {k: v for k, v in r.items() if v and k not in
+                                   ("title", "paper title", "authors", "author", "year", "doi", "abstract")}})
+    elif path.suffix.lower() == ".ris":
+        cur = {}
+        for line in text.splitlines():
+            m = re.match(r"^([A-Z][A-Z0-9])  - ?(.*)$", line)
+            if not m:
+                continue
+            tag, val = m.groups()
+            if tag == "ER":
+                rows.append(cur); cur = {}
+            elif tag in ("TI", "T1"): cur["title"] = val
+            elif tag in ("AU", "A1"): cur["authors"] = (cur.get("authors", "") + "; " + val).strip("; ")
+            elif tag in ("PY", "Y1", "DA"): cur.setdefault("year", val[:4])
+            elif tag == "DO": cur["doi"] = val
+            elif tag in ("JO", "JF", "T2"): cur.setdefault("venue", val)
+            elif tag == "AB": cur["abstract"] = val
+    else:  # BibTeX
+        for m in re.finditer(r"@\w+\s*\{.*?(?=\n@|\Z)", text, re.S):
+            f = _bib_fields(m.group(0))
+            rows.append({"title": f.get("title"), "authors": f.get("author", "").replace(" and ", "; "),
+                         "year": f.get("year"), "doi": f.get("doi"), "venue": f.get("journal") or f.get("booktitle"),
+                         "abstract": f.get("abstract", "")})
+    for r in rows:
+        if not r.get("title"):
+            continue
+        doi = re.sub(r"^https?://(dx\.)?doi\.org/", "", r.get("doi") or "") or None
+        m = re.search(r"arxiv\.(\d{4}\.\d{4,5})", (doi or "").lower())
+        rec = {"id": rec_id(doi, m.group(1) if m else None, "title:" + re.sub(r"\W+", "", r["title"].lower())[:60]),
+               "title": r["title"], "authors": [x.strip() for x in re.split(r";|\n", r.get("authors") or "") if x.strip()],
+               "year": int(r["year"]) if str(r.get("year") or "").isdigit() else None, "date": None,
+               "venue": r.get("venue"), "doi": doi, "arxiv": m.group(1) if m else None,
+               "url": f"https://doi.org/{doi}" if doi else None, "abstract": r.get("abstract") or "",
+               "citations": None, "source": a.source}
+        if r.get("extra"):
+            rec["extracted"] = r["extra"]  # e.g. SciSpace table columns: Methods, Limitations...
+        emit(rec)
+
+
 # ----------------------------------------------------------------- store ---
 
 def cmd_add(a):
@@ -280,6 +359,8 @@ def main():
             p.add_argument("--cat", help="arXiv category, e.g. cs.LG")
         p.set_defaults(fn=fn)
     p = sp.add_parser("cites"); p.add_argument("ident"); p.add_argument("--max", type=int, default=25); p.set_defaults(fn=cmd_cites)
+    p = sp.add_parser("scispace"); p.set_defaults(fn=cmd_scispace)
+    p = sp.add_parser("import"); p.add_argument("file"); p.add_argument("--source", default="scispace-export"); p.set_defaults(fn=cmd_import)
     p = sp.add_parser("add"); p.add_argument("project"); p.set_defaults(fn=cmd_add)
     p = sp.add_parser("bib"); p.add_argument("ids", nargs="+"); p.set_defaults(fn=cmd_bib)
     p = sp.add_parser("verify"); p.add_argument("paper_dir"); p.add_argument("--offline", action="store_true"); p.set_defaults(fn=cmd_verify)

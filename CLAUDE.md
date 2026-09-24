@@ -69,8 +69,13 @@ Between checkpoints, work autonomously. Don't ask permission for routine steps.
   Industry claims go in `literature/industry.md` with URL and access date.
 
 Store everything: pipe `lit.py` output into `python3 tools/lit.py add projects/<slug>`.
-Convert SciSpace hits to the same JSON-line schema (`id` = `doi:<doi>` or
-`arXiv:<id>`, `source: "scispace"`) and add them the same way.
+SciSpace MCP results: save the raw JSON response to a file, then
+`python3 tools/lit.py scispace < file.json | python3 tools/lit.py add projects/<slug>`.
+- **SciSpace web app exports** (paid features: Agent, full-text chat, literature-review
+  tables, SLR screening): the PI drops CSV/RIS/BibTeX exports into
+  `literature/imports/`; ingest with `python3 tools/lit.py import <file> | python3 tools/lit.py add projects/<slug>`.
+  Extra CSV columns (e.g. Methods, Limitations) are kept under `extracted`.
+  Check `literature/imports/` for new files at the start of every literature stage.
 
 ## Workspace conventions
 

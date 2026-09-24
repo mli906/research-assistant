@@ -8,3 +8,4 @@ projects/*/paper/*.fls
 projects/*/paper/*.fdb_latexmk
 __pycache__/
 .DS_Store
+projects/*/code/
