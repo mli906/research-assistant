@@ -1,0 +1,7 @@
+# CAGE-1: control, assurance and governance evaluation for enterprise agentic AI (arXiv:2607.03510, 2026-07)
+Read: full text (arXiv PDF, 17 pp, reviewer, 2026-09-25; memory and evaluation sections read closely). Tags: gaps-check.
+
+- **What it is.** A single-author "independent technical report". It proposes a conceptual assurance framework with 12 dimensions (authority, policy enforcement, retrieval, **memory integrity**, tool safety, auditability, oversight, conflict handling, safe failure, "Prebind Assurance", readiness, business fitness), maturity levels, artifacts and illustrative scenarios (e.g. a $75k finance payment).
+- **Memory content.** Memory "must be scoped, time-bounded, provenance-backed, revocable, and subject to policy". It introduces a "Memory Governance Record" artifact: what the agent can remember, for whom, for how long, under which scope and revocation rules. It says nothing on erasure verification, legal retention, barriers or aggregation.
+- **Evaluation.** **None.** §12 describes how the framework *could* be validated (3–5 agents, failure injection); there are no data, no benchmark and no results.
+- **Relevance.** No empirical threat to any gap. It is a framing competitor for a practitioner-facing "governance evaluation" paper, and a citation for "practitioners want memory scope/retention/revocation evaluated", but it is weak evidence (not peer reviewed, no data).

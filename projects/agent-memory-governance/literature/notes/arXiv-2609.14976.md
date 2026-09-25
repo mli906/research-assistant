@@ -1,0 +1,8 @@
+# MemRiskBench: trace-aware risk-preserving evaluation for long-horizon agents (arXiv:2609.14976v1, 2026-09-14)
+Read: full text (arXiv PDF, 16 pp, reviewer, 2026-09-25). Tags: gaps-check, threats.
+
+- **Contribution.** Five scored memory risks: R1 stale, R2 conflict, R3 cross-scope leakage, R4 revoked-memory reuse, R5 constraint decay. R6 summary contamination is documented but unscored. 120 scripted episodes (24 per risk) with deterministic trace-grounded checks and no LLM judge on the pass/fail path. The secondary contribution is a risk-preserving 20% subset selector (Spearman 0.975).
+- **Setup.** Five local quantized models of 1.5B–7B (three are Qwen). Tools are deterministic stubs. It has **no real memory backend**: the memory is the episode's scripted store. Post-hoc rescoring changed 39/600 scores. Refusal is scored as failure by default, with a safety-aware variant for R3/R5.
+- **Results.** Leakage pass rates are 4%–42% per model. The model–risk differences do not survive Holm correction. The paper claims RAG/recency filtering "performs worse than no filtering", with no numbers given in the paper.
+- **Limits.** Small (24 leakage episodes), local models only, and the authors state that it "does not address… privacy in deployed assistants, consent, data retention". No finance obligations, although the authors are at a finance university's fintech lab, so a finance extension is plausible.
+- **Relevance.** Low threat to GP1 (no retention). Low–medium threat to GP2: it has a generic cross-user leakage category but no client/barrier structure, aggregation, persistence across real sessions or backend. It is a useful precedent for deterministic, judge-free scoring and for reporting per-risk (not aggregate) rates, which our programme should copy.
