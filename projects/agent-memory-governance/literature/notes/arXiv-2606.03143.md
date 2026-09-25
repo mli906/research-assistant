@@ -1,0 +1,9 @@
+# FederatedSkill: federated learning for agentic skill evolution (arXiv:2606.03143)
+Read: full text (arXiv HTML via WebFetch extraction, 2026-09-25). Tags: skills, core.
+
+- **Problem.** Single-user task streams lack diversity, and cross-user trajectory sharing exposes private content. One global library ignores client heterogeneity.
+- **Method.** Clients distil trajectories locally into **semantic skill diffs** (structured patches), "explicitly prompted to omit task-specific values, IDs, or one-off outputs". Sanitisation steps: observations truncated, execution metrics stripped, absolute paths rejected. A server evolution agent aggregates the patches into personalised libraries. Decision logs (DECISIONS.md) record the source patch, reward and justification for every modified path, which gives per-client attribution.
+- **Privacy.** **No formal guarantee (no DP, no k-anonymity).** Privacy is by construction, since only patches leave the client. An empirical audit (entity extraction, attribute inference, reconstruction, PII canaries) reports no leakage. We could not see per-metric numbers in the extraction, so treat the numeric leakage level as unverified. The appendix names "Misplaced Trust in Empirical Privacy" as a risk.
+- **Deletion.** Not addressed: no removal of a client's past contributions.
+- **Limitations (stated).** Assumes a trusted federation: "Defending against adversarial clients attempting to upload malicious or poisoned skill patches goes beyond the scope."
+- **Critique.** This is the closest *mechanism* to governed cross-user promotion. It has attribution logs but no leakage bound, no erasure propagation, no poisoning defence and no regulated-domain framing. Its privacy rests on an LLM judging what is "generalizable", which is the very step AntiSkillBench (arXiv:2608.03700) shows leaks 55–66% of persona content.
