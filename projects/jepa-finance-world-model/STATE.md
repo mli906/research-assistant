@@ -1,6 +1,6 @@
 # Project state
 
-- **Stage:** 2 - gaps done (2026-10-01, `gaps.md`); next: PI checkpoint 2 (pick gap(s)), then `/ideate`
+- **Stage:** 2 - gaps done; PI chose G1, G5, G3 (2026-10-01); next `/ideate`
 - **Last updated:** 2026-10-01
 - **last_radar:**
 
@@ -17,16 +17,15 @@
 5. Evaluation: FinStressTS arXiv:2606.03184 is a synthetic finance benchmark with known mechanisms, a candidate for controlled tests where real data only shows one path.
 
 ## Next step
-1. PI reads `gaps.md` (§0 what changed, §4 ranked top 5, §5 questions) and answers the PI questions (WRDS modules, proprietary private-firm data, Forma weight licence, causal appetite, competition/null tolerance, compute, venue).
-2. PI picks gap(s) (checkpoint 2); suggested start: G1 step 0 (CPU headroom test) + G4 mini-replication in parallel.
-3. `/ideate` on the chosen gap(s).
-4. Re-run `/radar` with short arXiv queries (the finance-facet date-sorted sweep from stage 1 is still incomplete).
+1. `/ideate` on G1 (firm-statement PIT benchmark, G2 merged as arm), G5 (supply-chain + disaster natural experiments, K5 revived), G3 (identified-shock macro diagnostic). Ideas must assume free SEC XBRL as-filed data until WRDS/Revere access is confirmed; G5 ideas need a public-data fallback (Compustat Segments / SEC customer disclosures).
+2. Ideation should include a cheap pilot that decides the framing (JEPA-as-method vs benchmark-with-JEPA-arm), e.g. G1 step 0 headroom test + small JEPA vs value-objective comparison.
+3. Re-run `/radar` with short arXiv queries.
 
 ## Open questions for the PI
 - Compute budget: estimate to be produced after the review (checkpoint 3 before any GPU spend).
 - Which academic subscriptions exactly (WRDS modules, Bloomberg/Refinitiv), and any alt-data vendors already licensed?
 
-- Which WRDS modules exactly (Compustat Snapshot for point-in-time?)
+- Data access (PI checking): WRDS modules (Compustat Snapshot, CRSP, I/B/E/S, Segments), FactSet Revere. Until confirmed, design on free SEC XBRL as-filed data.
 
 ## Decisions log
 | Date | Decision | By | Rationale |
@@ -43,3 +42,6 @@
 | 2026-10-01 | Gap analysis done. ICML 2026 paper read in FULL TEXT (PMLR 306 PDF via Lacuna mirror; note `notes/icml2026-mahns-latent-market-states.md`); Fin-JEPA full text (author LaTeX). New closest prior for (b): Forma/ProForma-20Q arXiv:2608.11327 (ICAIF '26 companion). Ranked: G1 latent-vs-value objective on firm statements under point-in-time structured masks (b); G3 identified-shock action conditioning + LP/Proxy-DFM + DSGE-Gym (a); G2 cross-frequency market→fundamentals nowcast (b); G4 honest scaled market-state JEPA eval (pilot); G5 network firm state + natural experiments (c). 11 candidates killed/merged. +36 papers tagged `gaps-check` | assistant (gap-analyst) | See gaps.md §4; awaiting PI choice (checkpoint 2) |
 | 2026-10-01 | Tool note: `lit.py arxiv` ANDs all tokens, so long queries return empty (looked like rate limiting); short 2-3 term queries work | assistant | Use short queries |
 | 2026-10-01 | Adversarial pass on top 5 gaps: G1 survives narrowed; G2 weakened, merge into G1; G3 weakened, diagnostic only; G4 weakened, pilot only; G5 survives narrowed if link data; K5 revived inside G5. Realistic deliverable = benchmark/diagnostic paper with a JEPA arm | assistant (reviewer) | reviews/gaps-adversarial.md; folded into gaps.md |
+| 2026-10-01 | Checkpoint 2: pursue G1, G5, G3 into ideation | PI | All three use cases represented |
+| 2026-10-01 | Framing (JEPA-as-method vs benchmark-with-JEPA-arm) to be decided after a pilot | PI | Reviewer's cross-cutting objection; wants evidence first |
+| 2026-10-01 | Data access unknown; default to free SEC XBRL as-filed | PI | PI to check WRDS/Revere entitlements |
