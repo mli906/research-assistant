@@ -1,0 +1,6 @@
+# arXiv:2606.03184 FinStressTS: parametric synthetic benchmark for financial forecasting
+Read: HTML full text via WebFetch extraction (2026-10-01).
+- **Design:** six mechanism families (GARCH vol clustering, HAR multi-scale persistence, heavy tails, regime switching, Hawkes self-exciting jumps, zero-inflated jumps), five diagnostic levels each, multivariate panel with shared latent drivers. 15 models (AR/HAR/VAR, DLinear, PatchTST, iTransformer, Autoformer, FEDformer, NS-Transformer, TimeXer, DeepAR, TimeGrad, TSFlow, TimeMCL, RATD, QuantileFormer). One-step-ahead only.
+- **Findings:** AR/HAR/DLinear beat complex Transformers in low-SNR settings; local/patch attention beats global; DeepAR best CRPS in 24 of 30 settings; TSFlow better under multimodality; diffusion (RATD) degrades on breaks; neural models need 2-3x more data than classical for equal calibration; performance plateaus early (financial signal "information-sparse").
+- **Limitations:** parametric simulation, no microstructure, one-step, no decision-aware metrics.
+- **Relevance:** (i) a controlled test bed for JEPA vs classical baselines; (ii) the 2-3x data-efficiency gap is the headline evidence that small-data finance favours simple models, so any JEPA claim must beat HAR/AR/DeepAR. No JEPA model evaluated.

@@ -1,0 +1,6 @@
+# Missing Values Handling for Machine Learning Portfolios (A. Y. Chen) - arXiv:2207.13071
+
+Read: abstract (from library record) only; a full-text fetch through WebFetch returned a summary that contradicted the abstract on the main finding, so it was discarded. Do not rely on it beyond the abstract. Accessed 2026-10-01.
+
+**Abstract claims.** 159 cross-sectional predictors; simply imputing with cross-sectional means performs well compared with rigorous EM imputation, because (1) missingness comes in large time-blocks, (2) cross-sectional correlations among predictors are small, (3) missingness is organised by underlying data source; hence observed data carry little information about missing values, and sophisticated imputation adds estimation noise that can underperform.
+**Why it matters.** It is the counterweight to Bryzgalova, Lerner, Lettau, Pelger (doi:10.1093/rfs/hhae036, abstract: >70% of firms, ~half of market cap affected; imputation exploiting time-series and cross-sectional dependence changes risk-premium estimates). Together they say: imputation gains depend on whether structure (low-rank factors, persistence) is exploitable, a testable condition for a latent-state model on firm panels. Any JEPA/nowcasting claim on firm fundamentals must beat cross-sectional-mean and the BLLP (XP-Value-style) imputer, not zero-fill.

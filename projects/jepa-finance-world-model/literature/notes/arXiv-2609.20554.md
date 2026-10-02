@@ -1,0 +1,7 @@
+# Does training on future data pay? Look-ahead bias in forecasting with pretrained models (arXiv:2609.20554)
+Sept 2026. Read: arXiv HTML via summarising fetch tool (2026-10-01); author names not captured.
+- **Definition:** look-ahead in the *parameters*: inputs respect the forecast date but the pretrained model's weights were trained on data after it.
+- **Design:** Chronos (Tiny/Mini/Small) and TimesFM (8M/20M), independently trained annual vintages on (i) US firm returns, (ii) global firm returns, (iii) augmented factor data. Targets: US equity premium + 13 non-US markets, monthly 1994-2023, h=1,3,6,12. Compares origin-aligned point-in-time models with models trained past the origin.
+- **Results:** later vintages revise forecasts by 8.5-38.7% of benchmark error but usually make them *worse*: negative in 18 of 20 model-horizon combinations, median -5.94 pp relative to historical-average MSFE; portfolio median -1.77 pp (US), -2.14 pp (international). Training on global returns flips the US effect to +1.37 pp, i.e. effect depends on training scope. Revisions would need alignment efficiency ~0.137-0.186 to pay; actual 0.006-0.041.
+- **Limits:** single architecture family, frequency transfer (daily to monthly) noted in appendix.
+- **Why it matters:** (1) finance foundation models need vintage-by-vintage (annual) pretraining or an explicit contamination audit, which multiplies compute; (2) surprising sign: future data can *hurt* return forecasts (noise fitting), so "leakage inflates accuracy" is not universal in this low-SNR regime. Confidence: medium.

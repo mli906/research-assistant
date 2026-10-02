@@ -1,0 +1,6 @@
+# arXiv:2608.29029 Flow-JEPA: robust latent dynamics via flow matching
+Read: HTML full text via WebFetch extraction (2026-10-01).
+- **Method:** conditional flow matching in latent space; jointly predicts the whole future latent trajectory from Gaussian source (not autoregressive); inference = Euler ODE, 8 steps. Env: Two-Room, Reacher, Push-T, OGBench-Cube. Baseline LeWM (also PLDM, DINO-WM reported).
+- **Results:** clean success 86% -> 92%; under visual perturbation 67% -> 86%; degradation clean->noisy 19 pts (LeWM) vs 6 pts. Cost ~3.8x per planning cycle.
+- **Key negative for our purposes:** per the extraction the model outputs a single deterministic trajectory after ODE integration; it does NOT sample multiple futures or quantify uncertainty (stochasticity is used for robustness only). Authors: no ablation separating joint-trajectory prediction from stochastic flow training; short horizons; Gaussian perturbations only.
+- **Relevance:** despite the name, not a scenario generator out of the box. Scenario sampling would need Branch-JEPA-style (arXiv:2607.05238) or VJEPA-style (arXiv:2601.14354) predictive distributions, or noise injection into the flow's source distribution (speculation).

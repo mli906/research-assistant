@@ -1,0 +1,6 @@
+# arXiv:2606.27014 A Generalization Theory for JEPA-Based World Models
+Read: HTML full text via WebFetch extraction (2026-10-01).
+- **Result:** JEPA risk = low-rank factorisation of an action-conditioned co-occurrence matrix M(a) (Thm 3.1, spectral-contrastive-style, with a uniformity term to prevent collapse). Planning regret single-step <= 2*c0*max_a sqrt(R_JEPA); multi-step 2*T*c3*sqrt(max_a R_JEPA) (needs deterministic M(a)). Finite-sample: approximation error (sum of tail singular values^2, falls with latent dim k) + sample error (Rademacher, grows with k).
+- **Experiments:** 2D point-mass: latent prediction more robust than input-level reconstruction under noise at 25 steps. PushT multi-depth JEPA: success 64.0% -> 74.7% (H=25), 24.7 -> 33.3 (H=50), 6.7 -> 14.0 (H=75) vs layer-12 baseline; dimension-matched control smaller gain.
+- **Assumptions:** uniform marginal action effects; deterministic dynamics for multi-step; bounded norms.
+- **Critique/relevance:** the k trade-off (approx vs sample error) is the formal statement of the small-data problem: with scarce financial data the effective latent dimension should be small. Deterministic-dynamics assumption is violated by markets; the bound is for planning regret in a controlled setting, not for scenario distribution fidelity.

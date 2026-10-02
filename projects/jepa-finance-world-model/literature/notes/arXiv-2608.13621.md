@@ -1,0 +1,6 @@
+# arXiv:2608.13621 Your Probabilistic JEPA Is Secretly a Hidden Markov Model
+Read: HTML full text via WebFetch extraction (2026-10-01).
+- **Claim:** PIB-VJEPA has HMM structure: stochastic context encoder = amortised filtering distribution; probabilistic predictor = latent dynamics; decoder / inverse target encoder / implicit conditional = emission. Four correspondence levels (computational, emission-complete, sequence-level equivalence, model-and-objective equivalence) with sufficient conditions (Markov latent factorisation, emission completeness, marginal consistency, filtering consistency).
+- **MCJEPA:** replaces the predictor by a row-stochastic matrix A (q_{t+h} = q_t A^h; exact Chapman-Kolmogorov consistency over horizons). Synthetic experiments: HMM recovery, filtering resolves aliasing, information bottleneck recovers correct 4-state structure.
+- **Limits (authors):** discrete time; exact equivalence needs invertible encoders or explicit decoders (rare in practice); discrete-state collapse needs occupancy/entropy regularisers.
+- **Relevance:** gives a principled route from JEPA to regime-switching/state-space models that finance already trusts (HMM, Markov-switching), and a way to get multi-step consistency and calibrated filtering, at least in synthetic settings (M on usefulness, L on real data).

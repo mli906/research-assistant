@@ -1,0 +1,8 @@
+Library ids: arXiv:2605.10896; doi:10.48550/arxiv.2605.18147
+# V4FinBench (arXiv:2605.10896) and Foundation Models for Credit Risk Prediction (arXiv:2605.18147): tabular FMs on firm/credit data
+
+Read: full text via arXiv HTML through WebFetch (summariser-extracted). Accessed 2026-10-01. Combined note: both evaluate tabular foundation models on firm-level financial data.
+
+**V4FinBench.** EMIS financial statements, Visegrad group, 1.1M company-years, 203,900 firms, 2006-2021, 131 indicators, six horizons (0-5y), distress prevalence 0.19-0.36%. TabPFN with prototype undersampling of the context matches/exceeds GBDT on ROC-AUC at all horizons and beats them on F1 from h=2 (h=0: XGBoost F1 0.465 vs TabPFN 0.405). Llama-3-8B QLoRA far worse (h=0 AUC 0.825 vs 0.995; h=5 0.553 vs 0.811). Fine-tuned TabPFN lifts the American Bankruptcy Dataset AUC 0.818 -> 0.842. Validation: company-grouped, country-stratified 5-fold CV, not strictly temporal (leakage-prone for panel data; limitation).
+**Credit-risk FMs.** 14 PD and 7 LGD datasets (532 to 532k rows); TabICL best average AUC; FMs win 44.3% of folds; top methods within ~0.72-0.75 AUC; TabPFNv2 wins LGD R2 in 45.7% of folds (0.4455 vs CatBoost 0.4401). Consistent advantage only on small datasets (<5,000 rows), GBDT catches up beyond; FMs untuned vs tuned competitors; scalability ~10k rows.
+**Takeaway.** Tabular FMs are competitive-not-dominant on firm financial tables, and strongest exactly in the data-scarce regime the PI faces. Modest margins; independent replication absent. Relevance: strong baseline family for firm-fundamentals nowcasting; a tabular JEPA (arXiv:2609.25541 reports a JEPA term trailing value-only training) must beat TabPFN/TabICL, not just XGBoost.

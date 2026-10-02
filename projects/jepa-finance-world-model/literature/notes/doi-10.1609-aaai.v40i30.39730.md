@@ -1,0 +1,11 @@
+# Kronos: A Foundation Model for the Language of Financial Markets (Yu et al.) - arXiv:2508.02739 (AAAI 2026) [library id: doi:10.1609/aaai.v40i30.39730, merged with arXiv:2508.02739]
+
+Read: full text via arXiv HTML through WebFetch (summariser-extracted). Accessed 2026-10-01.
+
+**Problem.** General TSFMs underperform on K-line (OHLCVA) data; finance is <1% of their corpora; no unified model for forecasting, volatility, and generation.
+**Method.** Two stages: (1) transformer autoencoder with Binary Spherical Quantization tokenises 6-D K-lines into hierarchical coarse/fine subtokens (k=20 bits = 2x10); (2) decoder-only transformer predicts coarse then fine subtoken autoregressively. Sizes 24.7M / 102.3M / 499.2M.
+**Data.** >12B K-line records, 45 exchanges, 1-min to weekly; equities, crypto, FX, futures; cleaning for discontinuities/illiquidity. Pretraining ends 2024-06, test from 2024-07. Test universes include Shanghai, NASDAQ, Japan, India, Korea, HK (in-distribution), Indonesia/Malaysia/Taiwan (OOD), Binance spot, FX.
+**Baselines.** Zero-shot: TimeMoE, Moirai, TimesFM, MOMENT, Chronos. Full-shot (trained with MSE - 4*IC): iTransformer, TimeXer, TimesNet, TimeMixer, PatchTST, NSTransformer, FEDformer, DLinear. GARCH for volatility; DiffusionTS/TimeVAE/TimeGAN for generation.
+**Results.** Price-series RankIC +93% vs best TSFM, +87% vs best non-pretrained (iTransformer); volatility MAE -9%; synthetic-data discriminative fidelity +22%; best AER/IR on CSI-300 backtest (0.15% costs). Ablations: discrete > continuous (RankIC 0.0254 vs 0.0149 for Direct-AR), sequential subtoken > parallel, test-time averaging of 10 samples +~40% IC.
+**Stated limitations.** Unclear if K-lines carry enough information to drive short-term prices; 512-token context; no comparison with PLUTUS/DELPHYNE; backtest on Chinese market only; no formal significance tests.
+**Critique.** Relative improvements are on very small absolute RankICs (0.01-0.03), so +93% is not informative without absolute values and confidence intervals. Still the strongest evidence that finance-native pretraining at scale helps cross-asset forecasting, and it is generative (tokens), i.e. an autoregressive world-model competitor to a JEPA, and the natural scenario-generation baseline.

@@ -1,0 +1,5 @@
+# arXiv:2605.01694 Latent State Design for World Models under Sufficiency Constraints
+Read: HTML full text via WebFetch extraction (2026-10-01). Conceptual/survey paper, no new experiments (per authors).
+- **Framework:** organises world models by the *role* of the latent state (predictive embedding, recurrent belief state, object/causal structure, latent action interface, planning interface, memory) under task-specific sufficiency constraints; seven-axis evaluation matrix (representation, prediction, planning, controllability, causal/counterfactual support, memory, uncertainty).
+- **Propositions:** P1 exact belief states subsume prediction and control under POMDP assumptions; P2 predictive sufficiency does not imply control sufficiency; P3 passive prediction alone cannot identify counterfactual dynamics, which needs action-conditioned data or causal structure.
+- **Relevance (high, conceptual):** P3 is the formal basis for treating counterfactual finance claims as high-risk with observational data; P1 motivates belief-state predictors for partial observability. Limits: argument-based; claims are only as strong as the cited literature.

@@ -1,0 +1,8 @@
+# arXiv:2609.31161 I Act Therefore I Am: When Is JEPA's Action-Conditioning Enough to Learn Causal Mechanisms?
+Read: HTML full text via WebFetch extraction (2026-10-01). Second extraction from the PDF route contradicted details (it invented "linear SCMs"); only the HTML extraction is used here.
+- **Problem:** when does an action-conditioned JEPA recover the latent causal state (up to symmetries)?
+- **Theory:** Assumption 3.1 smooth invertible observation map; Assumption 3.2 actions induce sufficiently diverse changes in the latent transition mechanisms (rank condition on action-variation matrices). Theorem 3.3: component-wise identifiability up to 1-D invertible transforms and permutation.
+- **Method (A-JEPA, Eq. 15):** Gaussian NLL for action-modulated transitions + contrastive entropy surrogate, trade-off alpha.
+- **Results:** synthetic: component-wise MCC about 0.95 when assumptions hold, degrades with fewer actions or non-invertible observation. Visual (TwoRoom, OGB, Reacher, PushT): beats LeWM and PLDM on component-wise recovery; RoboNet transfer R^2 > 0.90 at 20-step rollout on unseen robots.
+- **Limitations (authors):** non-invertible observations; graph recovery harder in high dimension.
+- **Critique / relevance:** the key condition is rich, exogenous action variation. Finance has few, endogenous (policy reacts to state), confounded actions and observations are many-to-one (non-invertible). So this theorem gives a *checklist for when counterfactual claims fail* rather than a licence. Note the paper is about interventional data where actions are chosen/randomised; observational confounding is not covered by the theorem as extracted (confidence: medium, since only the extraction was read).
