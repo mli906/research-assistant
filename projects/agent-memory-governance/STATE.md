@@ -21,10 +21,15 @@ See chat summary; to be superseded by literature/review.md.
    Memoria (arXiv:2512.12686; IEEE 11330332) is **per-user, per-session storage; shared memory not enabled.**
    **New scope:** procedural memory distilled from traces and **promoted to skills** (reusable across users) is in scope.
 
-## Next step
-1. Adversarial pass on `gaps.md` (reviewer), incl. reading the GPM PDF (arXiv:2608.12476; HTML unavailable) which may shrink GP1/GP3.
-2. PI answers the §5 questions in `gaps.md` and picks gap(s) → `/ideate`.
-Top 5 (draft): GP1 joint retention+erasure; GP2 cross-client need-to-know/barriers/composition; GP7 backend-invariant conformance; GP5 cost of governance vs stateless; GP4 cross-layer certified erasure (as a component). Proposed programme: one benchmark + conformance harness evaluating a retention-aware, scope-preserving gateway; pilot = GP1 + GP7 on 2 backends.
+## Next step (updated 2026-10-05)
+**Checkpoint 2 (PI): pick the paper.** Ideation, tournament, probes and a fatal-flaw pass are all done (`ideas.md` §§3,7,8). The reviewer's recommended plan (ideas.md §8.4):
+- **Paper 1 (recommended):** *Does pooling client traces into shared agent skills pay for its privacy cost?* — merges the decisive parts of I2 (leakage diagnosis) + I1 (support threshold/utility arms) + the I5 erasure fold. Rarity sweep is the decisive experiment. A "don't pool, write the procedure" result is publishable. ICAIF '27 main track; rough $100–250, 8–10 weeks (speculation).
+- **Paper 2 (conditional on Paper 1 + PI Q1):** I1 narrowed to support-threshold + lineage-bound re-derivation.
+- **I5:** no standalone paper; folded into Paper 1. Report the Mem0 `history()` finding to maintainers (responsible disclosure).
+
+**Blocking PI decision:** the 4 conditions in §8.4 for Paper 1 to keep its *in-house* motivation (is trace-learned cross-client skill sharing actually wanted; is there ≥1 procedure whose know-how is not in written policy; is promotion automatic at scale; is "don't share" acceptable). If "no/per-client only", Paper 1 still stands as a vendor-agnostic measurement (Foundry/AgentCore ship cross-user procedural memory) but loses the in-house hook. If "undecided", Paper 1 is the evidence for that decision — the strongest framing.
+
+Once the PI picks: `/design-experiments agent-memory-governance` on the chosen paper (needs an API key for the kill-test; see §7.6 "still blocked").
 
 ## Open questions for the PI
 - (gaps, 2026-09-25) EU/UK/CA data subjects in scope? May a de-branded gateway design be published? Pilot traces approvable? Does the entity run MNPI barriers or only client confidentiality? Counsel on 204-2 classification of memory items + 17(3)(b)? Venue and mechanism-vs-benchmark preference? Can the in-house backend be tested unnamed? (see gaps.md §5)
