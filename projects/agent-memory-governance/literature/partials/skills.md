@@ -114,10 +114,11 @@ The columns are: trace source; skill representation; promotion gate; cross-user?
 | System (id) | Trace source | Skill representation | Promotion gate | Cross-user? | Provenance | Unlearning | Evaluation |
 |---|---|---|---|---|---|---|---|
 | Synapse (arXiv:2306.07863) | own trajectories | exemplar trajectories | — | no | — | — | MiniWoB++, Mind2Web |
-| ExpeL (arXiv:2308.10144) | own trajectories | NL insights + exemplars | — | no | — | — | benchmarks not named in stored abstract |
-| AutoManual (arXiv:2405.16247) | own interaction | rule manual | rule optimisation online | no | — | — | ALFWorld (others per abstract truncated) |
+| ExpeL (arXiv:2308.10144) | own trajectories | NL insights (add/edit/upvote/downvote/way of thought) + exemplars (experience gathering, insights extraction, evaluation) | — | no | — | — | Exact match for HotpotA and FEVER, completing task in time for ALFWorld,  purchasing the item that matches all attributes
+for WebShop, comparison across imitation learning, ReAct/Act as baseline, and ablation study (retrieval only or insights only)|
+| AutoManual (arXiv:2405.16247) | own interaction | rule manual | rule optimisation online | no | — | — | ALFWorld, MiniWoB++, WebArena, compared with ReAct/Reflxion/ExpeL/RCI/AdaPlanner/Planner+Lib (sort of ablation) |
 | Voyager (arXiv:2305.16291) | own exploration | code skill library | self-verification | no | — | — | Minecraft |
-| AWM (arXiv:2409.07429) | offline or online queries | NL workflows | — (induced on the fly) | no | — | — | Mind2Web +24.6%, WebArena +51.1% rel. |
+| AWM (arXiv:2409.07429) | offline or online queries | NL workflows | rule-based and LLM based rule induction (induced on the fly) | no | — | — | Success rate: Mind2Web +24.6%, WebArena +51.1% rel. compared with autonoous agents and human engineered workflow |
 | ASI (arXiv:2504.06821) | own web interaction | programmatic skills | execution verification | no | — | — | WebArena |
 | SkillWeaver (arXiv:2504.07079) | self-exploration | API skills | honing/testing | skills transferable across agents | — | — | WebArena, real sites |
 | Agent KB (arXiv:2507.06229) | many agent *frameworks* | shared experience KB | — | **cross-agent** (not cross-user) | — | — | GAIA, SWE-bench |
@@ -131,12 +132,12 @@ The columns are: trace source; skill representation; promotion gate; cross-user?
 | FICAL (arXiv:2412.08054) | client data | "knowledge compendiums" (text) | — | yes (federated) | — | — | tool-learning tasks |
 | Designer-RSI (arXiv:2609.22086, full) | **real user briefs (1,406)** | NL skills | matched replay gate; k_min=3 occurrences | **yes, pooled traffic** | — | — | GenEval2 72.7→99.3% |
 | SkillsVote (arXiv:2605.18401) | open corpus + trajectories | Agent Skills | verifiability profiling + attribution | ecosystem | attribution of outcomes to skills | — | synthesised verifiable tasks |
-| GRASP (arXiv:2605.29668) | own failures | bounded skill library | **net improvement under hard regression budget** | no | — | — | MedAgentBench 40.6→88.8% |
+| GRASP (arXiv:2605.29668) | own failures | bounded skill library | rarely verify if a new "fix" breaks previously correct behavior—leading to silent performance regressions. "Regression gate"—meaning it yields net improvements on a balanced, held-out probe dataset under a strict budget. **net improvement under hard regression budget** | no | — | — | MedAgentBench 40.6→88.8% |
 | FRAMES (arXiv:2608.01772) | enterprise production feedback | skills for policy-bound workflows | Pareto + **anti-regression guarantee** | within firm | "preserving auditability" | — | internal production + τ-bench |
 | SkillCommit (arXiv:2608.15165) | experience stream | hierarchical skills | behavioural validation before abstraction | no | instance patches kept | — | — |
-| MSCE (arXiv:2607.16621) | step traces | policies with evidence links | positive estimated gain | no | **evidence links retained** | — | EvoAgentBench, LoCoMo |
+| MSCE (arXiv:2607.16621) | step traces | policies with evidence links | trace normalization, positive estimated gain | no | **evidence links retained** | — | EvoAgentBench, LoCoMo |
 | SR-Fraud (arXiv:2609.27287, full) | matured production errors | human-readable rules | **Wilson bound + cap + optional human review** | aggregate over customers | versioned weekly | conservative retirement | proprietary 9-week stream |
-| MemoRepair (arXiv:2605.07242, full) | agent memory incl. skills | prose/chain/neural skills | validate successor before republish | no | **provenance graph required** | **cascade repair on delete/correct** | ToolBench, MemoryArena |
+| !!!MemoRepair (arXiv:2605.07242, post memory delete repair) | agent memory incl. skills | prose/chain/neural skills | validate successor before republish | no | **provenance graph required** | **cascade repair on delete/correct** | ToolBench, MemoryArena |
 
 ---
 

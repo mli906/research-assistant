@@ -1,7 +1,7 @@
 # Project state
 
 - **Stage:** 3→4 transition - PI pivoted to a capability-first Phase-1 build: offline trace→skill distillation + capability/governance harness (demo for Q4). See `experiments/phase1-plan.md`. Privacy/erasure ideas (I1/I2/I5) deferred to Phase 2.
-- **Last updated:** 2026-09-25
+- **Last updated:** 2026-10-06
 - **last_radar:**
 
 ## PI research taste
@@ -27,7 +27,7 @@ See chat summary; to be superseded by literature/review.md.
 2. Provide an API key (Bedrock Claude); stand up SkillEvolBench, reproduce no-skill vs self-gen baselines.
 3. Wire AgentDojo banking + synthetic RIA to a shared metrics harness (capability + regression + finance safety).
 4. Then `/design-experiments` to pre-register the frozen question + matrix before the big run (checkpoint 3 spend).
-Carried-open PI decisions: null/mixed-result acceptance (revisit at checkpoint 4); AFTER as a stretch transfer bench.
+Carried-open PI decisions: null/mixed-result acceptance (revisit at checkpoint 4); AFTER as a stretch transfer bench; **how finance-forward Phase 1 should be** — SkillEvolBench-general-first (current default) vs promoting AFTER + leaning harder on the synthetic RIA (PI to steer).
 
 ---
 ### Archived (Stage 3 ideation outcome, superseded by the 2026-10-06 pivot; revive for Phase 2)
