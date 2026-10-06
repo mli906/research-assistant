@@ -27,6 +27,8 @@ See chat summary; to be superseded by literature/review.md.
 2. Provide an API key (Bedrock Claude); stand up SkillEvolBench, reproduce no-skill vs self-gen baselines.
 3. Wire AgentDojo banking + synthetic RIA to a shared metrics harness (capability + regression + finance safety).
 4. Then `/design-experiments` to pre-register the frozen question + matrix before the big run (checkpoint 3 spend).
+**Second Phase-1 thread opened (2026-10-06): agent-memory threat model → guardrails for Memoria** (`experiments/threat-model-and-guardrails-plan.md`). Reconciled threat→guardrail→intercept→metric table + vendor baseline-to-adopt vs gap-to-own built from existing review material (threats.md T1–T18, review §2 grid, PI memo). Recommended Q4 demo cut: injection, authority collapse, revocation/erasure, cross-client leakage (front line); collusion + multi-agent as 'what breaks when sharing is enabled'; contagion as a model-dependent caveat. Open: demo substrate (open backend→port to Memoria [default] vs straight at Memoria); 4-up cut vs promote shared-tier; parallel vs sequence with the skill-distillation thread. Quick follow-up: cross-walk table to exact C##/memo metrics (memo §6a/§15).
+
 Carried-open PI decisions: null/mixed-result acceptance (revisit at checkpoint 4); AFTER as a stretch transfer bench; **how finance-forward Phase 1 should be** — SkillEvolBench-general-first (current default) vs promoting AFTER + leaning harder on the synthetic RIA (PI to steer).
 
 ---
@@ -62,3 +64,4 @@ Once the PI picks: `/design-experiments agent-memory-governance` on the chosen p
 | 2026-10-06 | PI pivot: Phase-1 = capability-first offline trace→skill distillation + capability/governance harness, demo for Q4; privacy/erasure (I1/I2/I5) deferred to Phase 2 | PI | Wants a demonstrable build first; paper expansion later |
 | 2026-10-06 | Primary trace→skill benchmark = SkillEvolBench (arXiv:2605.24117); finance via AgentDojo banking + synthetic RIA; AFTER as stretch transfer bench | assistant/PI | SkillEvolBench is purpose-built for episodic→procedural with the exact baselines + frozen held-out controls; verified API-based + released |
 | 2026-10-06 | Q4 deliverable = internal demo + results (not a paper); API budget not a constraint | PI | Seed for Phase-2 paper |
+| 2026-10-06 | Opened Phase-1B: agent-memory threat model → guardrails for Memoria (Q4 demo + paper seed); taxonomy reconciled from existing review material; vendor baseline-to-adopt vs gap-to-own mapped | PI/assistant | experiments/threat-model-and-guardrails-plan.md; skill-distillation thread (1A) is one slice (T6/T8) |
