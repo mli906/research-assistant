@@ -1,8 +1,9 @@
 # Project state
 
 - **Stage:** 3→4 transition - PI pivoted to a capability-first Phase-1 build: offline trace→skill distillation + capability/governance harness (demo for Q4). See `experiments/phase1-plan.md`. Privacy/erasure ideas (I1/I2/I5) deferred to Phase 2.
-- **Last updated:** 2026-10-06
-- **last_radar:**
+- **Last updated:** 2026-10-27
+- **last_radar:** 2026-10-22 (`skills`×`evaluation` facets; digest `literature/radar-2026-10-22.md`; 23 new records → 921). Also wrote `literature/eval-procedural-skills.md` synthesizing procedural-memory/skill-distillation evaluation (beyond success rate; general vs finance). Finance × procedural-memory × governance-eval gap intact; medium scoop risk.
+- **2026-10-27:** New facet `memory-taxonomy` opened. Wrote `literature/memory-taxonomy.md` — cognitive-science-grounded taxonomy of agent memory from the PI's three lenses (evolutionary chronology / functional / computational-infrastructure), 25 records tagged, library → 938. Finding: lens 3 (infra) = already our "mechanisms" axis; lens 2 (functional, CoALA) well-populated but never synthesized here; **lens 1 (evolutionary) near-empty in the field** — "brain-inspired" work copies mechanisms, not evolutionary ordering. New framing content (my synthesis, med conf): reverse-evolutionary ordering of agent memory (§2.2) + evo-age→substrate→deletability cross-walk (§5), which structurally explains G1/G4. Closest prior art: arXiv:2512.23343 ("AI Meets Brain") and Manchikanti grey-lit compliance×CoALA survey (doi:10.5281/zenodo.19141492) — both to be read in full and differentiated.
 
 ## PI research taste
 - Wants breadth first: regulation, evaluation metrics and trustworthiness evaluation included in the review.
