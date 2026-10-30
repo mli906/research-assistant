@@ -1,5 +1,7 @@
 # Evaluation methods, benchmarks and metrics for agent memory governance
 
+> **Part of the evaluation landscape** — governance deep-dive. Hub & full-space map: [`memory-evaluation.md`](memory-evaluation.md); procedural branch: [`eval-procedural-skills.md`](eval-procedural-skills.md).
+
 Facet tag: `evaluation`. Cleaned at synthesis on 2026-09-24 from `partials/evaluation.md`, which also holds the query plan for `/radar`. The main review is `review.md`: §2 is the operations × properties matrix and §8 the convergent gaps.
 - **Recency.** arXiv was searched `--since 2025-06-01`, with results up to 2026-09-22. SciSpace has no hits after about 2026-01. Foundations have no date limit. Web sources were accessed 2026-09-24.
 - **Records.** 170 library records carry the `evaluation` tag. 16 of them are evaluation-`core`, with notes in `literature/notes/`.

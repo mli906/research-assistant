@@ -1,5 +1,7 @@
 # Evaluation of procedural memory and skill distillation: beyond success rate, and general vs finance
 
+> **Part of the evaluation landscape** — procedural deep-dive (§7 of the hub). Hub & full-space map: [`memory-evaluation.md`](memory-evaluation.md); governance branch: [`evaluation.md`](evaluation.md).
+
 Facet: cross-cut of `skills` × `evaluation`. Companion to [`partials/skills.md`](partials/skills.md) §3/§6 (skill-formation systems and their eval), [`evaluation.md`](evaluation.md) §2–§5 (benchmark catalog, metric taxonomy, pitfalls, industry), and the PI eval-metrics materials indexed in [`../inputs/INDEX.md`](../inputs/INDEX.md) (SciSpace metric catalog M01–M26; M21–M22 are the procedural-memory metrics).
 
 - **Question answered.** When an agent distills procedural memory / skills from traces, what is actually evaluated beyond task "success rate", what benchmark datasets exist, and how should the evaluation focus differ between general and finance-specific tasks?

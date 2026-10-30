@@ -1,5 +1,7 @@
 # Partial: Evaluation methods, benchmarks and metrics (facet tag: `evaluation`)
 
+> **Part of the evaluation landscape** — working partial / query plan behind [`../evaluation.md`](../evaluation.md). Hub & full-space map: [`../memory-evaluation.md`](../memory-evaluation.md).
+
 Scout: lit-scout (evaluation facet). Compiled 2026-09-24.
 Recency cutoffs: arXiv searched with `--since 2025-06-01`, results up to 2026-09-22. SciSpace index has no hits later than ~2026-01. Foundations have no date limit. Web sources were accessed 2026-09-24.
 Records: 169 library records carry the `evaluation` tag; 16 of them are `core` and have notes in `literature/notes/arXiv-*.md`.
